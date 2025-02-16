@@ -2,7 +2,7 @@ import {useLocation} from 'react-router-dom'
 import Header from '../Header'
 import './index.css'
 
-const GameReportsRoute = () => {
+const GameReportRoute = () => {
   const location = useLocation()
   const {questions = [], ttlQns = 0} = location.state || {}
 
@@ -120,4 +120,4 @@ const GameReportsRoute = () => {
   )
 }
 
-export default GameReportsRoute
+export default GameReportRoute

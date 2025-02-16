@@ -84,7 +84,7 @@ class Login extends Component {
         </label>
         <input
           type={passwordType}
-          id="passowrd"
+          id="password"
           value={password}
           onChange={this.onChangePassword}
           className="user-input"
@@ -111,9 +111,10 @@ class Login extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
+
     return (
       <div className="login-bg-container">
-        <form onSubmit={this.submitForm} className="form-container">
+        <form className="form-container" onSubmit={this.submitForm}>
           <div className="logo-container">
             <img
               className="logo-img"
@@ -127,6 +128,7 @@ class Login extends Component {
           <button type="submit" className="login-button">
             Login
           </button>
+
           {showSubmitErr && <p className="err_msg">*{errorMsg}</p>}
         </form>
       </div>

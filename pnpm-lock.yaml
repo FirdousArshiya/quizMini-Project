@@ -12,6 +12,7 @@ specifiers:
   eslint-config-prettier: 8.1.0
   eslint-plugin-prettier: 3.3.1
   history: 5.0.1
+  hooks: 0.3.2
   husky: 4.3.8
   js-cookie: 3.0.1
   lint-staged: 10.5.4
@@ -33,6 +34,7 @@ dependencies:
   build: 0.1.4
   chalk: 4.1.0
   history: 5.0.1
+  hooks: 0.3.2
   js-cookie: 3.0.1
   msw: 0.39.2
   react: 17.0.1
@@ -7602,6 +7604,11 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
+    dev: false
+
+  /hooks/0.3.2:
+    resolution: {integrity: sha512-TqeFzUf12rSzcbm5lUls81jimUC8TmXZ4ANPxxeeMou09hrjBcHYhAQ0WgyN5YqNCXOzz7L6xVNl/+ctFuSeOw==}
+    engines: {node: '>=0.4.0'}
     dev: false
 
   /hoopy/0.1.4:

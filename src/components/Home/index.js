@@ -31,7 +31,7 @@ class Home extends Component {
         How Many Of These Questions Do You Actually Know?
       </h1>
       <p className="home-para">
-        Test yourself with these easy questions and answers
+        Test yourself with these easy quiz questions and answers
       </p>
       <Link to="/quiz-game">
         <button
@@ -46,7 +46,7 @@ class Home extends Component {
       <div className="warning-container">
         <img
           src="https://assets.ccbp.in/frontend/react-js/quiz-game-error-img.png"
-          alt="warning error"
+          alt="warning icon"
           className="warning-image"
         />
         <p className="warning-text">

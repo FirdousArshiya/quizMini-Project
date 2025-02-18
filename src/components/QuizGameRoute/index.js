@@ -37,6 +37,7 @@ const QuizGameRoute = () => {
       const response = await fetch(apiUrl, options)
       if (response.ok) {
         const data = await response.json()
+        console.log(data)
         const updatedData = data.questions.map(eachQuestion => ({
           question: eachQuestion.question_text,
           optionType: eachQuestion.options_type,

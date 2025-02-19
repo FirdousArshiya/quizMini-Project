@@ -10,7 +10,8 @@ const QuizGameRoute = () => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(-1)
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
-  const [setQuizFinished] = useState(false)
+  // eslint-disable-next-line
+  const [quizFinished, setQuizFinished] = useState(false)
   const [timer, setTimer] = useState(15)
   const history = useHistory()
   const timerRef = useRef(null)
@@ -26,18 +27,14 @@ const QuizGameRoute = () => {
   async function fetchQuizQuestions() {
     setApiStatus(apiStatusConstants.inProgress)
     try {
-      const apiUrl = 'https://apis.ccbp.in/assess/questions'
       const jwtToken = Cookies.get('jwt_token')
-      const options = {
+      const response = await fetch('https://apis.ccbp.in/assess/questions', {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
-        method: 'GET',
-      }
-      const response = await fetch(apiUrl, options)
+      })
       if (response.ok) {
         const data = await response.json()
-        console.log(data)
         const updatedData = data.questions.map(eachQuestion => ({
           question: eachQuestion.question_text,
           optionType: eachQuestion.options_type,
@@ -77,7 +74,6 @@ const QuizGameRoute = () => {
   }
 
   useEffect(() => {
-    // eslint-disable-next-line
     fetchQuizQuestions()
     // eslint-disable-next-line
   }, [])
@@ -87,7 +83,6 @@ const QuizGameRoute = () => {
       startTimer()
     }
     return () => {
-      // eslint-disable-next-line
       clearInterval(timerRef.current)
     }
     // eslint-disable-next-line
@@ -95,7 +90,7 @@ const QuizGameRoute = () => {
 
   const renderLoadingView = () => (
     <div data-testid="loader" className="loader">
-      <Loader type="ThreeDots" color="#0b69ff" height={50} width={50} />
+      <Loader type="loader" color="#0b69ff" height={50} width={50} />
     </div>
   )
 
@@ -152,7 +147,7 @@ const QuizGameRoute = () => {
       setSelectedAnswerIndex(-1)
       setTimer(15)
     } else {
-      setQuizFinished(true)
+      setQuizFinished(true) // Update the state to indicate quiz is finished
       history.push({
         pathname: '/game-results',
         state: {

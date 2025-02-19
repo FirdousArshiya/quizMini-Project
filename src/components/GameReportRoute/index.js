@@ -2,7 +2,7 @@ import {useLocation} from 'react-router-dom'
 import Header from '../Header'
 import './index.css'
 
-const GameReportRoute = () => {
+const GameReportsRoute = () => {
   const location = useLocation()
   const {questions = [], ttlQns = 0} = location.state || {}
 
@@ -109,7 +109,7 @@ const GameReportRoute = () => {
                   alt="unattempted icon"
                   className="score-icon"
                 />{' '}
-                <p className="count">{Unattempted} Unattempted answers</p>
+                <p className="count">{Unattempted} Unattempted</p>
               </div>
             </div>
           </div>
@@ -120,4 +120,4 @@ const GameReportRoute = () => {
   )
 }
 
-export default GameReportRoute
+export default GameReportsRoute

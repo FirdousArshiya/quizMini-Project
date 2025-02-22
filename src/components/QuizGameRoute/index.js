@@ -36,6 +36,7 @@ const QuizGameRoute = () => {
       })
       if (response.ok) {
         const data = await response.json()
+        console.log(data)
         const updatedData = data.questions.map(eachQuestion => ({
           question: eachQuestion.question_text,
           optionType: eachQuestion.options_type,
@@ -43,7 +44,7 @@ const QuizGameRoute = () => {
             id: option.id,
             text: option.text,
             url: option.image_url,
-            isCorrect: option.is_correct === 'true',
+            isCorrect: option.is_correct,
           })),
           id: eachQuestion.id,
           crctOptId: eachQuestion.options.find(
@@ -53,6 +54,7 @@ const QuizGameRoute = () => {
         }))
         setQuizQuestions(updatedData)
         setApiStatus(apiStatusConstants.success)
+        console.log(updatedData)
       } else {
         setApiStatus(apiStatusConstants.failure)
       }
@@ -66,10 +68,9 @@ const QuizGameRoute = () => {
     timerRef.current = setInterval(() => {
       setTimer(prevTimer => {
         const newTimer = prevTimer - 1
-        if (newTimer === 0) {
-          clearInterval(timerRef.current)
-        }
-        return newTimer >= 0 ? newTimer : 0
+        // console.log(timerRef.current)
+
+        return newTimer
       })
     }, 1000)
   }
@@ -79,6 +80,7 @@ const QuizGameRoute = () => {
     // eslint-disable-next-line
   }, [])
 
+  // console.log(activeQuestionIndex)
   useEffect(() => {
     if (apiStatus === apiStatusConstants.success) {
       startTimer()
@@ -127,6 +129,12 @@ const QuizGameRoute = () => {
     if (selectedAnswerIndex === -1) {
       setSelectedAnswerIndex(answerIndex)
       const crntQn = quizQuestions[activeQuestionIndex]
+
+      // console.log(quizQuestions)
+      // console.log(crntQn)
+      // console.log(answerIndex)
+      // console.log(crntQn.crctOptId)
+
       const isCorrect = crntQn.crctOptId === answerIndex
       if (isCorrect) {
         setCorrectAnswersCount(prevCount => prevCount + 1)
@@ -141,6 +149,7 @@ const QuizGameRoute = () => {
       clearInterval(timerRef.current)
     }
   }
+  // console.log(quizQuestions)
 
   const handleNextQuestion = () => {
     if (activeQuestionIndex + 1 < quizQuestions.length) {

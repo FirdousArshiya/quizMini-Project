@@ -37,7 +37,7 @@ const GameResultsRoute = () => {
                 alt="won"
                 className="won-image"
               />
-              <h1 className="congrats-text">Congrats</h1>
+              <h1 className="congrats-text">Congrats!</h1>
               <h1 className="percentage-text">
                 {correctPercentage}% Correctly Answered
               </h1>

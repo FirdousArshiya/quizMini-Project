@@ -10,6 +10,7 @@ const QuizGameRoute = () => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(-1)
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
+
   // eslint-disable-next-line
   const [quizFinished, setQuizFinished] = useState(false)
   const [timer, setTimer] = useState(15)

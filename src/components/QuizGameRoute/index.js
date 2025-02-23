@@ -69,6 +69,9 @@ const QuizGameRoute = () => {
       setTimer(prevTimer => {
         const newTimer = prevTimer - 1
         // console.log(timerRef.current)
+        if (newTimer === 0) {
+          clearInterval(timerRef.current)
+        }
 
         return newTimer
       })
@@ -81,13 +84,12 @@ const QuizGameRoute = () => {
   }, [])
 
   // console.log(activeQuestionIndex)
+
   useEffect(() => {
     if (apiStatus === apiStatusConstants.success) {
       startTimer()
     }
-    return () => {
-      clearInterval(timerRef.current)
-    }
+
     // eslint-disable-next-line
   }, [apiStatus, activeQuestionIndex])
 
@@ -128,6 +130,7 @@ const QuizGameRoute = () => {
   const handleAnswerSelection = answerIndex => {
     if (selectedAnswerIndex === -1) {
       setSelectedAnswerIndex(answerIndex)
+
       const crntQn = quizQuestions[activeQuestionIndex]
 
       // console.log(quizQuestions)
@@ -184,7 +187,10 @@ const QuizGameRoute = () => {
       switch (optionType) {
         case 'DEFAULT':
           return options.map((option, index) => {
+            // console.log(slctOptId)
+            // console.log(option.id)
             const isSelected = slctOptId === option.id
+            // console.log(isSelected)
             const isCorrect = crctOptId === option.id
             let optionClass = ''
             if (isSelected) {

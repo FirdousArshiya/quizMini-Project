@@ -119,9 +119,11 @@
 }
 .option.correct {
   background-color: green;
+  color: #ffffff;
 }
 .option.incorrect {
   background-color: red;
+  color: #ffffff;
 }
 .option-image {
   height: 50px;
@@ -167,7 +169,7 @@
   bottom: 20px; /* Position at the bottom */
   right: 20px; /* Position at the bottom right */
   background-color: #0ea5e9;
-  color: #ffff;
+  color: #ffffff;
   font-size: 14px;
   padding: 8px 20px;
   margin-top: 8px;
@@ -175,7 +177,7 @@
   border-radius: 4px;
   cursor: pointer;
 }
-.single-select .option {
+.single-select.option {
   width: auto; /* Allow single select options to adjust width */
   background-color: transparent; /* Remove background color */
 }

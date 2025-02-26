@@ -129,6 +129,7 @@ const QuizGameRoute = () => {
 
   const handleAnswerSelection = answerIndex => {
     if (selectedAnswerIndex === -1) {
+      // console.log(selectedAnswerIndex)
       setSelectedAnswerIndex(answerIndex)
 
       const crntQn = quizQuestions[activeQuestionIndex]
@@ -142,6 +143,7 @@ const QuizGameRoute = () => {
       if (isCorrect) {
         setCorrectAnswersCount(prevCount => prevCount + 1)
       }
+      // console.log(activeQuestionIndex)
       setQuizQuestions(prevQuestions =>
         prevQuestions.map((question, index) =>
           index === activeQuestionIndex
@@ -152,7 +154,8 @@ const QuizGameRoute = () => {
       clearInterval(timerRef.current)
     }
   }
-  // console.log(quizQuestions)
+  // console.log(selectedAnswerIndex)
+  console.log(quizQuestions)
 
   const handleNextQuestion = () => {
     if (activeQuestionIndex + 1 < quizQuestions.length) {

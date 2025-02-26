@@ -4,14 +4,14 @@ import './index.css'
 
 const GameReportsRoute = () => {
   const location = useLocation()
-  const {questions = [], ttlQns = 0} = location.state || {}
+  const {crctAns, questions, ttlQns} = location.state
 
   const getUnattemptedQuestions = () =>
     questions.filter(question => question.slctOptId === null)
 
-  const getCorrectAnswersCount = () =>
-    questions.filter(question => question.slctOptId === question.crctOptId)
-      .length
+  // const getCorrectAnswersCount = () =>
+  //  questions.filter(question => question.slctOptId === question.crctOptId)
+  //    .length
 
   const getIncorrectQuestionsCount = () =>
     questions.filter(
@@ -71,7 +71,7 @@ const GameReportsRoute = () => {
     )
   }
 
-  const CorrectAnswers = getCorrectAnswersCount()
+  // const CorrectAnswers = getCorrectAnswersCount()
   const IncorrectAnswers = getIncorrectQuestionsCount()
   const Unattempted = getUnattemptedQuestions().length
 
@@ -83,7 +83,7 @@ const GameReportsRoute = () => {
           <div className="score-container">
             <div className="score-circle">
               <p>
-                <span className="score">{CorrectAnswers}</span>/{ttlQns}
+                <span className="score">{crctAns}</span>/{ttlQns}
               </p>
             </div>
             <div className="score-details">
@@ -93,7 +93,7 @@ const GameReportsRoute = () => {
                   alt="correct answer icon"
                   className="score-icon"
                 />{' '}
-                <p className="count">{CorrectAnswers} Correct answers</p>
+                <p className="count">{crctAns} Correct answers</p>
               </div>
               <div className="score-item">
                 <img

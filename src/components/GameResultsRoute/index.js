@@ -4,8 +4,11 @@ import './index.css'
 
 const GameResultsRoute = () => {
   const location = useLocation()
+  // console.log(location.state)
+
   const history = useHistory()
-  const {crctAns = 0, ttlQns = 10, questions = []} = location.state || {}
+  const {crctAns, ttlQns, questions} = location.state
+  // console.log(crctAns)
 
   const correctPercentage = ((crctAns / ttlQns) * 100).toFixed(0)
   const isWinner = correctPercentage >= 60
